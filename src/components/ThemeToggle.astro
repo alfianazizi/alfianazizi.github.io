@@ -22,12 +22,7 @@
   </style>
   
   <script>
-    interface Window {
-      theme: {
-        value: string;
-      };
-    }
-  
+
     const theme = (() => {
       if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
         return localStorage.getItem('theme') || 'light';
