@@ -4,8 +4,13 @@ import mdx from '@astrojs/mdx';
 
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	output: 'hybrid',
+	site: "https://alfianazizi.github.io",
 	integrations: [mdx(), sitemap()],
-});
+	vite: {
+	  ssr: {
+		noExternal: ['@astrojs/prism'],
+	  },
+	},
+  });

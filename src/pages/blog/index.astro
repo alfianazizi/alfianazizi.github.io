@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	(a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
@@ -83,6 +83,19 @@ const posts = (await getCollection('blog')).sort(
 					font-size: 1.563em;
 				}
 			}
+			.dark main {
+				background: #1c1c1c;
+			}
+			.dark .title {
+				color: #fff;
+			}
+			.dark .date {
+				color: #ccc;
+			}
+			.dark ul li a:hover h4,
+			.dark ul li a:hover .date {
+				color: var(--accent);
+			}
 		</style>
 	</head>
 	<body>
@@ -91,7 +104,7 @@ const posts = (await getCollection('blog')).sort(
 			<section>
 				<ul>
 					{
-						posts.map((post) => (
+						posts.map((post: any) => (
 							<li>
 								<a href={`/blog/${post.slug}/`}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
